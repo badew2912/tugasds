@@ -18,8 +18,8 @@ st.subheader("Data:")
 st.write(data)
 
 # Bagi dataset menjadi fitur dan target
-X = data.drop('target', axis=1)
-y = data['target']
+X = data.drop('type', axis=1)
+y = data['type']
 
 # Bagi dataset menjadi data latih dan data uji
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
