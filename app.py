@@ -11,7 +11,7 @@ st.title("Prediksi Kebakaran Hutan dan Lahan")
 dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_2018-2022_Indonesia.csv"
 
 # Baca dataset
-data = pd.read_csv(dataset_url, delimiter="\t")
+data = pd.read_csv(dataset_url)
 
 # Ubah tipe data kolom-kolom numerik menjadi float
 numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
@@ -24,7 +24,7 @@ data['acq_date'] = pd.to_datetime(data['acq_date'])
 data['type'] = data['type'].astype(int)
 
 # Bagi dataset menjadi fitur dan target
-X = data.drop('type', axis=1)
+X = data.drop(columns=['type'])
 y = data['type']
 
 # Bagi dataset menjadi data latih dan data uji
