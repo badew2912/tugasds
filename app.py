@@ -7,7 +7,8 @@ from sklearn.metrics import accuracy_score
 # Tampilkan judul aplikasi
 st.title("Prediksi Kebakaran Hutan dan Lahan")
 
-data = pd.read_csv(dataset_url, dtype={'latitude': float, 'longitude': float, 'brightness': float, 'scan': float, 'track': float, 'acq_date': str, 'acq_time': int, 'satellite': str, 'instrument': str, 'confidence': int, 'version': float, 'bright_t31': float, 'frp': float, 'daynight': str, 'type': int})
+data = pd.read_csv(dataset_url)
+data['acq_date'] = pd.to_datetime(data['acq_date'])
 
 # Baca dataset
 data = pd.read_csv(dataset_url)
