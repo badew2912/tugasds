@@ -12,6 +12,8 @@ dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_20
 
 # Baca dataset
 data = pd.read_csv(dataset_url)
+data['acq_date'] = pd.to_datetime(data['acq_date'])
+
 
 # Tampilkan dataset
 st.subheader("Data:")
