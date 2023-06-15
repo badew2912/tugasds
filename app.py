@@ -12,12 +12,16 @@ dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_20
 
 # Baca dataset
 data = pd.read_csv(dataset_url)
+
+# Ubah tipe data kolom-kolom numerik menjadi float
+numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
+data[numeric_cols] = data[numeric_cols].astype(float)
+
+# Ubah tipe data kolom acq_date menjadi datetime
 data['acq_date'] = pd.to_datetime(data['acq_date'])
 
-
-# Tampilkan dataset
-st.subheader("Data:")
-st.write(data)
+# Ubah tipe data kolom target 'type' menjadi integer
+data['type'] = data['type'].astype(int)
 
 # Bagi dataset menjadi fitur dan target
 X = data.drop('type', axis=1)
@@ -37,6 +41,10 @@ y_pred = clf.predict(X_test)
 
 # Hitung akurasi model
 accuracy = accuracy_score(y_test, y_pred)
+
+# Tampilkan dataset
+st.subheader("Data:")
+st.write(data)
 
 # Tampilkan hasil prediksi dan akurasi
 st.subheader("Hasil Prediksi:")
