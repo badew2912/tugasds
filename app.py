@@ -14,8 +14,16 @@ dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_20
 data = pd.read_csv(dataset_url)
 
 # Ubah tipe data kolom-kolom numerik menjadi float
-numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
-data[numeric_cols] = data[numeric_cols].astype(float)
+data['latitude'] = data['latitude'].str.replace('.', '').astype(float)
+data['longitude'] = data['longitude'].str.replace('.', '').astype(float)
+data['brightness'] = data['brightness'].astype(float)
+data['scan'] = data['scan'].astype(float)
+data['track'] = data['track'].astype(float)
+data['acq_time'] = data['acq_time'].astype(int)
+data['confidence'] = data['confidence'].astype(int)
+data['version'] = data['version'].astype(float)
+data['bright_t31'] = data['bright_t31'].astype(float)
+data['frp'] = data['frp'].astype(float)
 
 # Ubah tipe data kolom acq_date menjadi datetime
 data['acq_date'] = pd.to_datetime(data['acq_date'])
