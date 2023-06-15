@@ -13,15 +13,12 @@ dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_20
 # Baca dataset
 data = pd.read_csv(dataset_url)
 
-# Ubah tipe data kolom-kolom numerik menjadi float
+# Konversi kolom latitude, longitude, brightness, scan, track, acq_time, confidence, version, bright_t31, frp menjadi float
 numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
-data[numeric_cols] = data[numeric_cols].astype(float)
+data[numeric_cols] = data[numeric_cols].apply(lambda x: x.str.replace('.', '')).astype(float)
 
-# Ubah tipe data kolom acq_date menjadi datetime
+# Konversi kolom acq_date menjadi tipe datetime
 data['acq_date'] = pd.to_datetime(data['acq_date'])
-
-# Ubah tipe data kolom target 'type' menjadi integer
-data['type'] = data['type'].astype(int)
 
 # Bagi dataset menjadi fitur dan target
 X = data.drop('type', axis=1)
