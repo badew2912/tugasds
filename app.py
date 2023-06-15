@@ -15,7 +15,7 @@ data = pd.read_csv(dataset_url)
 
 # Ubah tipe data kolom-kolom numerik menjadi float
 numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
-data[numeric_cols] = data[numeric_cols].apply(lambda x: x.str.replace('.', '').astype(float))
+data[numeric_cols] = data[numeric_cols].astype(float)
 
 # Ubah tipe data kolom acq_date menjadi datetime
 data['acq_date'] = pd.to_datetime(data['acq_date'])
