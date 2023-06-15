@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 st.title("Prediksi Kebakaran Hutan dan Lahan")
 
 # Ubah URL dengan URL file dataset yang sesuai di repositori GitHub Anda
-dataset_url = "https://raw.githubusercontent.com/USERNAME/REPO/main/dataset.csv"
+dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_2018-2022_Indonesia.csv"
 
 # Baca dataset
 data = pd.read_csv(dataset_url)
