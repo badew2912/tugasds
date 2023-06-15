@@ -17,6 +17,9 @@ data = pd.read_csv(dataset_url)
 numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
 data[numeric_cols] = data[numeric_cols].astype(float)
 
+# Ubah tipe data kolom target menjadi integer
+data['type'] = data['type'].astype(int)
+
 # Bagi dataset menjadi fitur dan target
 X = data.drop('type', axis=1)
 y = data['type']
