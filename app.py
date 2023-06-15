@@ -7,8 +7,8 @@ from sklearn.metrics import accuracy_score
 # Tampilkan judul aplikasi
 st.title("Prediksi Kebakaran Hutan dan Lahan")
 
-data = pd.read_csv(dataset_url)
-data['acq_date'] = pd.to_datetime(data['acq_date'])
+# Ubah URL dengan URL file dataset yang sesuai di repositori GitHub Anda
+dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_2018-2022_Indonesia.csv"
 
 # Baca dataset
 data = pd.read_csv(dataset_url)
@@ -38,6 +38,7 @@ accuracy = accuracy_score(y_test, y_pred)
 
 # Tampilkan hasil prediksi dan akurasi
 st.subheader("Hasil Prediksi:")
-st.write(pd.DataFrame({'Actual': y_test, 'Predicted': y_pred}))
+results = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+st.write(results)
 st.subheader("Akurasi:")
 st.write(accuracy)
