@@ -11,7 +11,7 @@ st.title("Prediksi Kebakaran Hutan dan Lahan")
 dataset_url = "https://raw.githubusercontent.com/badew2912/tugasds/main/modis_2018-2022_Indonesia.csv"
 
 # Baca dataset
-data = pd.read_csv(dataset_url)
+data = pd.read_csv(dataset_url, delimiter="\t")
 
 # Ubah tipe data kolom-kolom numerik menjadi float
 numeric_cols = ['latitude', 'longitude', 'brightness', 'scan', 'track', 'acq_time', 'confidence', 'version', 'bright_t31', 'frp']
